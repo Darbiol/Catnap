@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<title><%= title %></title>
+<link rel="stylesheet" type="text/css" href="/css/myblogs.css">
+<script type="text/javascript" src="/scripts/jquery.js"></script>
+<script type="text/javascript" src="/scripts/myblogsPage.js"></script>
+</head>
+<body>
+<div id="container">
+	<div id="header">
+		<div id="logo"><img src="/images/logo_head2.png" width="400" height="100"></div>
+	</div>
+	<div id="nav">
+			<ul>
+				<li><a href="/home/0">Home</a></li>
+				<li><a href="" class="current">MyBlogs</a></li>
+				<li><a href="#">About Us</a></li>
+				<li><a href="/logout">Logout</a></li>
+
+			</ul>
+		</div>
+
+	<div id="body">
+		<div id="wrapper"></div>
+		<div id="profile">
+			<div id="profPic"><img src="/images/profile.jpg"></div>
+			<div id="details">
+				<table id="detailsText">
+					<% infos.forEach(function (prof){%>
+					<tr>
+						<td id="profHead">Username:</td>
+						<td><%= prof.username %></td>
+					</tr>
+					<tr>
+						<td id="profHead">Password</td>
+						<td><span>*******</span><input type="hidden" class="upProf" id="password"></td>
+					</tr>
+					<tr>
+						<td id="profHead">First Name:</td>
+						<td><span id="textField"><%= prof.firstName%></span><input type="hidden" class="upProf" id="firstname"></td>
+					</tr>
+					<tr>
+						<td id="profHead">Last Name:</td>
+						<td><span id="textField"><%= prof.lastName%></span><input type="hidden" class="upProf" id="lastname"></td>
+					</tr>
+					<tr>
+						<td id="profHead">Email:</td>
+						<td><span id="emailField"><%= prof.email%></span><input type="hidden" class="upProf" id="email"></td>
+					</tr>
+					<%	}) %>
+				</table>
+			</div>
+		</div>
+		<div id="blogEntry">
+			<form method="POST" action="/blogSubmit" name="blogSub" accept-charset="utf-8">
+				<div id="blogTitle"><input type="text" name="title" placeholder="Enter Title Here" id="titleInput" required></div>
+				<div id="blogBody">
+					<textarea name="entry" rows="23" cols="50" placeholder="Write Your Entry Here" required></textarea>
+				</div>
+				<div id="buttContainer">
+					<input type="submit" value="POST" class="butt">
+				</div>
+			</form>
+		</div>
+		<div id="blogs">
+			<div id="blogsLink">
+				<h3>My Blogs</h3>
+				<ul>
+					<% doc.forEach(function (blog){%>
+						<li><a id="/home/<%= blog._id%>" href="#" class="clicked" ><%= blog.title %> </a></li>
+						<!--<li><a href="#" class="clicked"><%= blog.title %> </a></li>-->
+						
+
+				<%	})%>
+				</ul>
+			</div>
+			
+		</div>
+	</div>
+	<div id="footer"><span id="copyright">ChineseBear Solutions, Copyright © 2013</span></div>
+</div>
+	<div id="confBG"></div>
+	<div id="confirm" class="hidden">
+		<div id="confirmHead"></div>
+		<div id="confirmBody">
+			<div id="confirmMessege">Choose whether to View or Delete your blog.</div>
+			<div id="confButton"><button id="delButt" class="butt" placeholder="hello">Delete</button> <button id="viewButt" class="butt"><a href="" id="viewRef">View</a></button></div>
+		</div>
+	</div>
+</body>
+</html>

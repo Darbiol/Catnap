@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+
+<hrml>
+
+<head>
+
+<title><%= title%></title>
+
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/css/index.css">
+<script type="text/javascript" src="/scripts/jquery.js"></script>
+<script type="text/javascript" src="/scripts/indexPage.js"></script>
+
+</head>
+<body>
+<div id="containerL">
+	<div id="head">
+		<div id="logo"><img src="/images/logo_head2.png" width="300" height="70"></div>
+		<div id="login">
+			<form method="POST" action="/authenticate" name="login" accept-charset="utf-8">
+				<table>
+					<tr>
+						<td>
+							<span>Username:</span>
+						</td>
+						<td><input type="text" name="username" placeholder="Username"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><span>Password:</span></td>
+						<td><input type="password" name="password" placeholder="Password"></td>
+						<td><input type="submit" value="Login" class="loginButt"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	<div id="container">
+		<div id="wrapper"></div>
+		<div id="announcements">
+			<h1>Welcome to CATnap</h1>
+			<p>
+				A portal for cat-lovers everywhere. Share your cat knowledge with other cat enthusiasts.
+				If your a cat person, this is the place for you.
+			</p>
+		</div>
+
+		<div id="signup">
+			<form action='/' method="POST" name="signup" accept-charset="utf-8" id="signupForm">
+				<div id="signupholder" >
+					<table>
+						<tr>
+							<th>
+								Not a Member?Sign up now!
+							</th>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" placeholder="Username" name="uname" class="uname" id="username" maxlength="10" title="Maximum of 10 characters" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="password" placeholder="Password" name="pword" id="signIn" maxlength="12" title="Maximum of 12 characters" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" placeholder="First Name" name="firstname" id="signIn" pattern="[a-zA-Z]*" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" placeholder="Last Name" name="lastname" id="signIn" pattern="[a-zA-Z]*"required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="email" placeholder="Email Address" name="email" id="signIn" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="submit" value="Sign Up" class="butt" id="sub" >
+							</td>
+						</tr>
+
+					</table>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div id="foot"><span id="copyright">ChineseBear Solutions, Copyright © 2013</span></div>
+</div>
+</body>
+
+</html>

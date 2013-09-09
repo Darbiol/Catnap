@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<title><%= title%></title>
+<link rel="stylesheet" type="text/css" href="/css/home.css">
+<script type="text/javascript" src="/scripts/jquery.js"></script>
+<script type="text/javascript" src="/scripts/homePage.js"></script>
+<script type="text/javascript" src="/scripts/moment.js"></script>
+
+
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<div id="logo"><img src="/images/logo_head2.png" width="400" height="100"></div>
+		</div>
+		<div id="nav">
+			<ul>
+				<li><a href="/home/0" class="current">Home</a></li>
+				<li><a href="/myblogs">MyBlogs</a></li>
+				<li><a href="#">About Us</a></li>
+				<li><a href="/logout">Logout</a></li>
+
+			</ul>
+		</div>
+		<div id="user"><span id="welcome">Welcome, <%= user%>!<span></div>
+		
+		<div id="body">
+			<div id="blogContainer">
+				<div id="entryWrap"></div>		
+				<div id="blogEntry">
+				
+					<h1><span id="title"><%= blog.title%><span></h1>
+					<h4><span id="author"><%= blog.user%></span>&nbsp&nbsp<span id="date"><%= blog.added%></span></h4>
+					<p id="entry">
+						<%= blog.entry%> 
+					</p>
+					<div id="addComment">
+						<h3><span id="addCommentHead">Add Comment:</span></h3>
+						<form method="POST" action="/commentSubmit" name="blogSub" accept-charset="utf-8">
+							<input type="hidden" name="blogId" value="<%= blog._id%>">
+							<textarea name="comment" rows="5" cols="50" placeholder="Write Your Comment Here" required></textarea>
+							<div id="commentButtContainer"><input type="submit" value="POST" class="loginButt"></div>
+						</forn>
+					</div>
+
+
+<!---===================================================================COMMENTS=================================================-->	
+					<div id="comments">
+						<h3><span id="addCommentHead">Comments:</span></h3>	
+						<% blog.comments.forEach(function(comments){%>
+							<div id="commentThread">
+								<div id="pic"><img src="/images/profile.jpg" width-"60" height="60"></div>
+								<div id="commentHead"><span id="poster"><%= comments.username%></span><span id="commentDate">
+									<%= comments.dateComment %></span></div>
+								<div id="commentContent">
+									<p><%= comments.body%></p>
+							</div>
+						</div>
+						<%})%>								
+					</div>
+<!---=========================================================COMMENTS=================================================-->						
+				</div>		
+
+
+			</div>
+
+
+
+
+
+
+
+
+
+			<div id="linkContainer">
+				<div id="linkWrap"></div>
+				<div id="blogLink">
+					<h3 id="linkHead">Related Posts</h3>
+					<ul>
+						<% links.forEach(function(blogLinks){%>
+							<li><a href="/home/<%= blogLinks._id%>"><%= blogLinks.title %></a></li>
+						<%})%>
+					</ul>
+				</div>			
+			</div>
+				
+		</div>
+		<div id="footer"><span id="copyright">ChineseBear Solutions, Copyright © 2013</span></div>
+	</div>
+</body>
+</html>
