@@ -76,7 +76,7 @@ exports.blogs = function (req, res){
 			else{
 				//console.log(doc.comments)
 				Blogs.find({_id: {$ne:id}}, {_id:1, title:1, added:1}, function (err, link){
-					if(err){throw err;console.log(err);}
+					if(err){ throw err; console.log(err);res.redirect('/404');}
 					else{
 						res.render('home', {title: "Welcometo CATnap", blog:doc, links:link, user:user});
 					}
